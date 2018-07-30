@@ -11,4 +11,3 @@ set OS_FLAVOR=f2.desktop.medium
 set OS_IMAGE=ubuntu-16.04-amd64-mate_desktop_18062018
 set OS_KEY_PAIR_NAME=LLaveDocker
 set OS_REGION_NAME=bootstack-jalasoft
-
