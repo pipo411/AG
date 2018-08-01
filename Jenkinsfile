@@ -15,14 +15,14 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh'./quickstart/gradlew test  -p quickstart/'
+                sh'./quickstart/gradlew test -p quickstart/'
             }
         }
 
     }
       post {
              always {
-             junit 'quickstart/build/test-results/*.xml'
+             junit 'quickstart/build/test-results/test/*.xml'
              publishHTML (target: [
                allowMissing: false,
                alwaysLinkToLastBuild: false,
