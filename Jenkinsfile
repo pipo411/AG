@@ -18,7 +18,12 @@ pipeline {
                 sh'./quickstart/gradlew clean testJacocoReport -p quickstart/'
             }
         }
-       
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
       post {
              always {
              archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
