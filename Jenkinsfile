@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh'./quickstart/gradlew clean testJacocoReport -p quickstart/'
+                sh'./quickstart/gradlew test testJacocoReport -p quickstart/'
             }
         }
         stage('Deploy') {
@@ -26,8 +26,11 @@ pipeline {
     }
       post {
              always {
-             archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
-             junit '**/*.xml'
+             junit 'quickstart/build/test-results/test/*.xml'
              }
+
+             success {
+             archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
+            }
          }
 }
