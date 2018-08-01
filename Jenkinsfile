@@ -9,7 +9,9 @@ pipeline {
                 chmod +x quickstart/gradlew
                 ./quickstart/gradlew clean assemble -p quickstart/
                 '''
-                sh'archiveArtifacts artifacts: '**/*.jar', fingerprint: true'
+                post{
+                 archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                }
             }
         }
         stage('Test') {
