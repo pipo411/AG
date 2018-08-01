@@ -9,6 +9,14 @@ pipeline {
                 chmod +x quickstart/gradlew
                 ./quickstart/gradlew clean assemble -p quickstart/
                 '''
+                publishHTML target: [
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'coverage',
+                            reportFiles: 'index.html',
+                            reportName: 'RCov Report'
+                          ]
             }
         }
         stage('Test') {
@@ -26,8 +34,7 @@ pipeline {
     }
       post {
              always {
-                 archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
-                 junit 'quickstart/build/test-results/test/*.xml'
+             junit 'quickstart/build/test-results/test/*.xml'
              }
          }
 }
