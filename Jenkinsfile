@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh'./quickstart/gradlew test jacocoReport -p quickstart/'
+                sh'./quickstart/gradlew test jacocoTestReport -p quickstart/'
             }
         }
         stage('Deploy') {
