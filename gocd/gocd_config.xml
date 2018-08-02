@@ -51,7 +51,7 @@
                         <artifacts>
                             <artifact type="test" src="quickstart/build/test-results/test/*.xml" dest="testoutput"/>
                             <artifact type="test" src="quickstart/build/jacocoHtml/*.html" dest="jacocoReport"/>
-                            <artifact type="test" src="quickstart/build/report/tests/test/index.html"
+                            <artifact type="test" src="quickstart/build/reports/tests/test/index.html"
                                       dest="htmlReports"/>
                         </artifacts>
                     </job>
