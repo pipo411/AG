@@ -6,7 +6,7 @@ pipelines:
     materials:
       repo:
         git: https://github.com/devops-at06/AG.git
-        branch: master
+        branch: gocdyaml
     stages:
       - Build:
           jobs:
