@@ -52,9 +52,6 @@ pipelines:
                 - build:
                     source: quickstart/build/jacocoHtml/index.html
                     destination: coverage
-         
-              tabs:
-                unit_test: xml/index.html 
-                coverage: testReport/index.html
-                htmlReports: html/index.html
-                
+              tabs: 
+                coverage: coverage/index.html
+                htmlReports: html/index.html           
