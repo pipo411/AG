@@ -1,6 +1,6 @@
 format_version: 3
 pipelines:
-  fa-quickstart-ci:
+  ariel-quickstart-ci:
     lock_behavior: lockOnFailure
     group: TEST
     materials:
@@ -31,7 +31,7 @@ pipelines:
                     command: ./quickstart/gradlew
                     arguments:
                       - clean
-                      - tests
+                      - test
                       - -p
                       - quickstart
                 - exec:
