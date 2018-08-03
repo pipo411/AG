@@ -1,6 +1,6 @@
 format_version: 3
 pipelines:
-  ariel-quickstart-ci:
+  fa-quickstart-ci:
     lock_behavior: lockOnFailure
     group: TEST
     materials:
@@ -18,12 +18,11 @@ pipelines:
                       - "clean"
                       - "assemble"
                       - "-p"
-                      - "quickstart"   
-                     
+                      - "quickstart"
               artifacts:
                 - build:
                     source: quickstart/build/libs/*.jar
-                    destination: buildJar   
+                    destination: war
       - Test:
           jobs:
             Unit_Test:
@@ -32,10 +31,9 @@ pipelines:
                     command: ./quickstart/gradlew
                     arguments:
                       - clean
-                      - test
+                      - tests
                       - -p
                       - quickstart
-                      
                 - exec:
                     command: ./quickstart/gradlew
                     arguments:
@@ -43,7 +41,7 @@ pipelines:
                       - test
                       - jacocoTestReport
                       - -p
-                      - quickstart/       
+                      - quickstart/
               artifacts:
                 - build:
                     source: quickstart/build/reports/tests/test/index.html
