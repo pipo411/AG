@@ -36,7 +36,7 @@ pipelines:
                       - quickstart
               artifacts:
                 - build:
-                    source: quickstart/build/reports/tests/test/**/*
+                    source: quickstart/build/reports/tests/test/index.html
                     destination: html
                 - test:
                     source: quickstart/build/test-results/test/*.xml
