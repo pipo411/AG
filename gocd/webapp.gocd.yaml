@@ -5,8 +5,8 @@ pipelines:
     group: TEST
     materials:
       repo:
-        git: https://github.com/pipo411/AG.git
-        branch: gocd_yaml
+        git: https://github.com/devops-at06/AG.git
+        branch: gocdyaml
     stages:
       - Build:
           jobs:
@@ -18,11 +18,12 @@ pipelines:
                       - "clean"
                       - "assemble"
                       - "-p"
-                      - "quickstart"
+                      - "quickstart"   
+                     
               artifacts:
                 - build:
                     source: quickstart/build/libs/*.jar
-                    destination: war
+                    destination: buildJar   
       - Test:
           jobs:
             Unit_Test:
@@ -34,6 +35,7 @@ pipelines:
                       - test
                       - -p
                       - quickstart
+                      
                 - exec:
                     command: ./quickstart/gradlew
                     arguments:
@@ -41,7 +43,7 @@ pipelines:
                       - test
                       - jacocoTestReport
                       - -p
-                      - quickstart/
+                      - quickstart/       
               artifacts:
                 - build:
                     source: quickstart/build/reports/tests/test/index.html
@@ -52,6 +54,18 @@ pipelines:
                 - build:
                     source: quickstart/build/jacocoHtml/index.html
                     destination: coverage
-              tabs: 
-                coverage: coverage/index.html
-                htmlReports: html/index.html           
+         
+              tabs:
+                unit_test: xml/index.html
+                coverage: testReport/index.html
+                htmlReports: html/index.html
+      - CodeQuality:
+          jobs:
+            CodeQuality: 
+              tasks:
+                - exec:
+                    command: ./quickstart/gradlew
+                    arguments:
+                      - sonarqube
+                      - -p
+                      - quickstart                
