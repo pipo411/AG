@@ -6,7 +6,7 @@ pipelines:
     materials:
       repo:
         git: https://github.com/devops-at06/AG.git
-        branch: gocdyaml
+        branch: master
     stages:
       - Build:
           jobs:
@@ -54,11 +54,12 @@ pipelines:
                 - build:
                     source: quickstart/build/jacocoHtml/index.html
                     destination: coverage
-         
+                    
               tabs:
                 unit_test: xml/index.html
                 coverage: testReport/index.html
                 htmlReports: html/index.html
+                
       - CodeQuality:
           jobs:
             CodeQuality: 
@@ -69,3 +70,4 @@ pipelines:
                       - sonarqube
                       - -p
                       - quickstart                
+
