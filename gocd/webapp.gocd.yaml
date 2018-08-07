@@ -5,8 +5,8 @@ pipelines:
     group: TEST
     materials:
       repo:
-        git: https://github.com/pipo411/AG.git
-        branch: task9
+        git: https://github.com/devops-at06/AG.git
+        branch: master
     stages:
       - Build:
           jobs:
