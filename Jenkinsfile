@@ -18,7 +18,12 @@ pipeline {
                 sh'./quickstart/gradlew test -p quickstart/'
             }
         }
-
+        stage('CodeQuality') {
+            steps {
+                echo 'Code Quality..'
+                sh'./quickstart/gradlew sonarqube -Dsonar.host.url=http://10.28.109.91:9000 -p quickstart/'
+            }
+        }
     }
       post {
              always {
