@@ -7,23 +7,23 @@ So how do you deploy Java apps using Docker? You’re in the right place. I’ll
 
 Docker supports just about any OS you’d care to use:
 
-**•Linux.**
-
-**•Mac.**
-
-**•Windows.**
-
-**•Windows Server.**
-
-**•AWS.**
-
-**•Azure.**
+   **•** Linux.
+    
+   **•** Mac.
+   
+   **•** Windows.
+   
+   **•** Windows Server.
+   
+   **•** AWS.
+        
+   **•** Azure.
 
 In order to do the deploy we need the following requirements:
 
-**•Install Docker.**
-
-**•Install java inside docker.**
+   **•** Install Docker.
+    
+   **•** Install java inside docker.
 
 **Steps:**
 **1- Create a directory by using below command.**
@@ -46,7 +46,8 @@ FROM java:8
 ```
 
 **4- Building a Docker Image**
-   Now, create an image by following the command below. In order to create an image, we must log in as root. In this example, we have switched to a root user. In the following command, java-application is the name of the image. We can have any name for our docker image.
+
+Now, create an image by following the command below. In order to create an image, we must log in as root. In this example, we have switched to a root user. In the following command, java-application is the name of the image. We can have any name for our docker image.
 
     $ docker build -t java-application
 
