@@ -1,5 +1,5 @@
 # AG
-#Deploy a java application with Docker
+**Deploy a java application with Docker**
 
 It’s an easy way to deploy, run, and manage applications using vm-like containers that are independent of elements like hardware and language, which makes these containers highly portable. And it’s all the rage.
 
@@ -25,7 +25,7 @@ In order to do the deploy we need the following requirements:
 
 **•Install java inside docker.**
 
-#Steps:
+**Steps:**
 **1- Create a directory by using below command.**
 
      `$ mkdir  java-docker-application`
@@ -45,7 +45,7 @@ FROM java:8
    CMD ["java", "Sample"]
 ```
 
-4- Building a Docker Image
+**4- Building a Docker Image**
    Now, create an image by following the command below. In order to create an image, we must log in as root. In this example, we have switched to a root user. In the following command, java-application is the name of the image. We can have any name for our docker image.
 
     $ docker build -t java-application
@@ -75,7 +75,7 @@ The output is shown below:
   
 After making a successful image build, we are now ready to run our docker image in the next step.
 
-5- Run Docker Image
+**5- Run Docker Image**
 
 Now we are going to run docker by using the following run command.
 
