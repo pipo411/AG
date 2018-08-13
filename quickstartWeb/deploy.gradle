@@ -14,8 +14,8 @@ task deploy {
   doLast {
     ssh.run {
       session(remotes.webServer) {
-        execute 'sudo chmod -R ugo+rw /opt/tomcat'
         put from: 'build/libs/task12.war', into: '/opt/tomcat/webapps'
+        execute 'sudo service tomcat restart'
       }
     }
   }
