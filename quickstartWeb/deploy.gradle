@@ -1,0 +1,23 @@
+plugins {
+  id 'org.hidetake.ssh' version '2.9.0'
+}
+
+remotes {
+  webServer {
+    host = '10.28.135.233'
+    user = 'ubuntu'
+    identity = file("C:\\Users\\Administrator\\Desktop\\KEY\\omy.pem")
+  }
+}
+
+task deploy {
+  doLast {
+    ssh.run {
+      session(remotes.webServer) {
+        put from: 'build/libs/task12.war', into: '/opt/tomcat/webapps'
+      }
+    }
+  }
+}
+
+
