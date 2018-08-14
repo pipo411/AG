@@ -4,8 +4,8 @@ plugins {
 
 remotes {
   webServer {
-    host = '10.28.135.244'
-    user = 'ubuntu'
+    host = "$dev_server"
+    user = "$user_server"
     identity = file("$key")
   }
 }
