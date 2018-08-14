@@ -2,72 +2,63 @@ format_version: 3
 pipelines:
   ariel-quickstart-ci:
     lock_behavior: lockOnFailure
-    group: TEST
+    group: Application
     materials:
       repo:
         git: https://github.com/devops-at06/AG.git
         branch: master
     stages:
-      - Build:
+      - Commit:
           jobs:
             Building:
               tasks:
                 - exec:
-                    command: ./quickstart/gradlew
+                    command: ./quickstartWeb/gradlew
                     arguments:
-                      - "clean"
+                      - clean
                       - "assemble"
                       - "-p"
-                      - "quickstart"   
+                      - "quickstartWeb"   
                      
               artifacts:
                 - build:
-                    source: quickstart/build/libs/*.jar
+                    source: quickstartWeb/build/libs/*.jar
                     destination: buildJar   
       - Test:
           jobs:
             Unit_Test:
               tasks:
                 - exec:
-                    command: ./quickstart/gradlew
+                    command: ./quickstartWeb/gradlew
                     arguments:
-                      - clean
-                      - test
-                      - -p
-                      - quickstart
-                      
-                - exec:
-                    command: ./quickstart/gradlew
-                    arguments:
-                      - clean
                       - test
                       - jacocoTestReport
                       - -p
-                      - quickstart/       
+                      - quickstartWeb      
               artifacts:
                 - build:
-                    source: quickstart/build/reports/tests/test/index.html
+                    source: quickstartWeb/build/reports/tests/test/index.html
                     destination: html
                 - test:
-                    source: quickstart/build/test-results/test/*.xml
+                    source: quickstartWeb/build/test-results/test/*.xml
                     destination: xml
                 - build:
-                    source: quickstart/build/jacocoHtml/index.html
+                    source: quickstartWeb/build/jacocoHtml/index.html
                     destination: coverage
                     
               tabs:
                 unit_test: xml/index.html
                 coverage: testReport/index.html
-                htmlReports: html/index.html
-                
+                htmlReports: html/index.html          
       - CodeQuality:
           jobs:
             CodeQuality: 
               tasks:
                 - exec:
-                    command: ./quickstart/gradlew
+                    command: ./quickstartWeb/gradlew
                     arguments:
                       - sonarqube
                       - -p
-                      - quickstart                
+                      - quickstartWeb
+                                                    
 
