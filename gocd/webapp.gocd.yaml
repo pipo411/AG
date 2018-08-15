@@ -1,32 +1,31 @@
 format_version: 3
 pipelines:
-  ariel-quickstart-ci:
+  quickstartWebapp-cli:
     lock_behavior: lockOnFailure
-    group: Application
+    group: App_war
     materials:
-      repo:
-        git: https://github.com/devops-at06/AG.git
-        branch: master
-    stages:
-      - Commit:
+      repo: 
+       git: https://github.com/devops-at06/AG.git
+       branch: master
+    stages: 
+      - Build: 
           jobs:
-            Building:
+            building: 
               tasks:
                 - exec:
                     command: ./quickstartWeb/gradlew
                     arguments:
-                      - clean
+                      - "clean"
                       - "assemble"
                       - "-p"
-                      - "quickstartWeb"   
-                     
+                      - quickstartWeb/"
               artifacts:
                 - build:
-                    source: quickstartWeb/build/libs/*.jar
-                    destination: buildJar   
+                    source: quickstartWeb/build/libs/*.war
+                    destination: Build
       - Test:
           jobs:
-            Unit_Test:
+            Unit_Test: 
               tasks:
                 - exec:
                     command: ./quickstartWeb/gradlew
@@ -34,31 +33,41 @@ pipelines:
                       - test
                       - jacocoTestReport
                       - -p
-                      - quickstartWeb      
+                      - quickstartWeb/
               artifacts:
                 - build:
-                    source: quickstartWeb/build/reports/tests/test/index.html
+                    source:  quickstartWeb/build/reports/tests/test/**/*
                     destination: html
                 - test:
-                    source: quickstartWeb/build/test-results/test/*.xml
-                    destination: xml
+                    source:quickstartWeb/build/test-results/test/*xml
+                    destination: xml               
                 - build:
-                    source: quickstartWeb/build/jacocoHtml/index.html
-                    destination: coverage
-                    
+                    source: quickstartWeb/build/jacocoHtml/**/*
+                    destination: jacoco
               tabs:
-                unit_test: xml/index.html
-                coverage: testReport/index.html
-                htmlReports: html/index.html          
-      - CodeQuality:
+                unit_test: html/index.html
+                jacoco: jacoco/index.html
+      - Sonarqube:
           jobs:
-            CodeQuality: 
+            analyzing: 
               tasks:
                 - exec:
                     command: ./quickstartWeb/gradlew
                     arguments:
-                      - sonarqube
+                      - "sonarqube"
+      - Deploy:
+          jobs:
+            analyzing: 
+              tasks:
+                - exec:
+                    command: ./quickstartWeb/gradlew
+                    arguments:
+                      - -b
+                      - deploy
+                      - deploy
+                      - -Pdev_server=10.28.135.36
                       - -p
-                      - quickstartWeb
+                      - quickstartWeb/
+
                                                     
 
