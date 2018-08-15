@@ -131,3 +131,4 @@ pipelines:
                       - -Pwar_path=BuildWar
                       - -p
                       - quickstartWeb
+                      

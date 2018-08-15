@@ -14,9 +14,9 @@ services:
 
     volumes:
 
-      - /home/ubuntu/docker/godata_server:/godata
+      - /home/ubuntu/gocd/godata_server:/godata
 
-      - /home/ubuntu/docker/go_server:/home/go
+      - /home/ubuntu/gocd/go_server:/home/go
 
   gocd_agent:
 
@@ -28,6 +28,6 @@ services:
 
     volumes:
 
-      - /home/ubuntu/docker/godata_agent:/godata
+      - /home/ubuntu/gocd/godata_agent:/godata
 
-      - /home/ubuntu/docker/go_agent:/home/go
+      - /home/ubuntu/gocd/go_agent:/home/go
