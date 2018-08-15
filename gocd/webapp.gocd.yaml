@@ -6,7 +6,7 @@ pipelines:
     materials:
       repo:
         git: https://github.com/pipo411/AG.git
-        branch: task13
+        branch: task13-deploy
     stages:
       - Build:
           jobs:
@@ -62,7 +62,7 @@ pipelines:
     materials:
       repo: 
        git: https://github.com/pipo411/AG.git
-       branch: task13
+       branch: task13-deploy
     stages: 
       - Build: 
           jobs:
