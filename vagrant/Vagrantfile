@@ -21,7 +21,7 @@ Vagrant.configure('2') do |config|
    s.vm.provision "docker_compose", compose_version: '1.21.2'
    s.vm.provider :openstack do |os, override|
      os.server_name = 'linux'
-     os.flavor = 'f1.desktop.small'
+     os.flavor = 'f3.lab.xlarge'
 	 os.tenant_name = ENV['OS_TENANT_NAME']
     os.project_name = ENV['OS_PROJECT_NAME']
      override.vm.synced_folder '.', '/vagrant', disabled: true
@@ -32,7 +32,7 @@ Vagrant.configure('2') do |config|
    config.vm.provision "shell", path: "install_tomcat.sh"
    s.vm.provider :openstack do |os, override|
      os.server_name = 'tomcat'
-     os.flavor = 'f1.desktop.small'
+     os.flavor = 'f3.lab.xlarge'
 	 os.tenant_name = ENV['OS_TENANT_NAME_TOMCAT']
     os.project_name = ENV['OS_PROJECT_NAME_TOMCAT']
      override.vm.synced_folder '.', '/vagrant', disabled: true
