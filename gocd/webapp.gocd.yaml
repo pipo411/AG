@@ -112,7 +112,7 @@ pipelines:
                     arguments:
                       - sonarqube
                       - -p
-                      - quickstartweb
+                      - quickstartWeb
       - Deploy:
           jobs:
             analyzing: 
