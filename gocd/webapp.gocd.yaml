@@ -103,14 +103,16 @@ pipelines:
               tabs:
                 unit_test: html/index.html
                 jacoco: jacoco/index.html
-      - Sonarqube:
+      - CodeQuality:
           jobs:
             analyzing: 
               tasks:
                 - exec:
                     command: ./quickstartWeb/gradlew
                     arguments:
-                      - "sonarqube"
+                      - sonarqube
+                      - -p
+                      - quickstartweb
       - Deploy:
           jobs:
             analyzing: 
