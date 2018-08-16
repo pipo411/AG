@@ -131,6 +131,7 @@ pipelines:
                       - -Pdev_server=10.28.135.36
                       - -Puser_server=ubuntu
                       - -Pwar_path=BuildWar
+                      - -Puser_home=/home/go/llavedocker.pem
                       - -p
                       - quickstartWeb
                       

@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                sh'./quickstartWeb/gradlew -b deploy.gradle deploy -p quickstartWeb/'
+                sh'./quickstartWeb/gradlew -b deploy.gradle deploy -Pdev_server=10.28.135.36 -Puser_server=ubuntu -Pwar_path=BuildWar -Puser_home=/home/go/llavedocker.pem   -p quickstartWeb/'
             }
         }
     }
@@ -47,3 +47,5 @@ pipeline {
             }
          }
 }
+
+
