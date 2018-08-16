@@ -21,6 +21,13 @@ pipeline {
                 sh'./quickstartWeb/gradlew uploadArchives -p quickstartWeb/'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy..'
+                sh'./quickstartWeb/gradlew -b deploy.gradle deploy -p quickstartWeb/'
+            }
+        }
     }
       post {
              always {
