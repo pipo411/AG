@@ -1,12 +1,17 @@
+
 plugins {
   id 'org.hidetake.ssh' version '2.9.0'
 }
 
+ssh.settings {
+    knownHosts = allowAnyHosts
+}
+
 remotes {
   webServer {
-    host = "$dev_server"
-    user = "$user_server"
-    identity = file("$key")
+    host = dev_server
+    user = user_server
+    identity = file(user_home)
   }
 }
 
@@ -30,5 +35,4 @@ task deploy {
     }
   }
 }
-
 
